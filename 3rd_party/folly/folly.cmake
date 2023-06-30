@@ -1,9 +1,9 @@
 include_guard(GLOBAL)
 
 install_3rd_party_cmake_dependency(
-  folly 
-  https://github.com/facebook/folly/archive/refs/tags/v2022.11.14.00.tar.gz 
-  "-DBUILD_TESTS=OFF;"
+  NAME folly 
+  URL https://github.com/facebook/folly/archive/refs/tags/v2022.11.14.00.tar.gz 
+  CMAKE_FLAGS "-DBUILD_TESTS=OFF;"
 )
 
 find_library(FOLLY_LIBRARY

@@ -1,9 +1,29 @@
 include_guard(GLOBAL)
 
-function(install_3rd_party_cmake_dependency LIB_NAME LIB_URL LIB_CMAKE_FLAGS)
+function(install_3rd_party_cmake_dependency)
     
+    cmake_parse_arguments("LIB" "" "NAME;URL;SOURCE_SUBDIR;" "CMAKE_FLAGS;" ${ARGN})
+
+    if(NOT LIB_NAME)
+        message(FATAL_ERROR "Parameter NAME is required!")
+    endif()
+
+    if(NOT LIB_URL)
+        message(FATAL_ERROR "Parameter URL is required!")
+    endif()
+
+    if(NOT LIB_CMAKE_FLAGS)
+        set(LIB_CMAKE_FLAGS "")
+    endif()
+
+    if(NOT LIB_SOURCE_SUBDIR)
+        set(LIB_SOURCE_SUBDIR ".")
+    endif()
+
+    message("LIB_CMAKE_FLAGS=" ${LIB_CMAKE_FLAGS})
+
+
     set(LIB_ROOT_DIR ${CMAKE_BINARY_DIR}/3rd_party/${LIB_NAME})
-    message("LIB_ROOT_DIR=" ${LIB_ROOT_DIR})
     set(LIB_DOWNLOAD_DIR ${LIB_ROOT_DIR}/download)
     set(LIB_SOURCE_DIR ${LIB_ROOT_DIR}/source)
     set(LIB_BUILD_DIR ${LIB_ROOT_DIR}/build)

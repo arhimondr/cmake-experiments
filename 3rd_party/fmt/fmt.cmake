@@ -1,9 +1,9 @@
 include_guard(GLOBAL)
 
 install_3rd_party_cmake_dependency(
-  fmt 
-  https://github.com/fmtlib/fmt/archive/refs/tags/8.0.1.tar.gz 
-  "-DFMT_MASTER_PROJECT=OFF;-DFMT_INSTALL=ON;"
+  NAME fmt
+  URL https://github.com/fmtlib/fmt/archive/refs/tags/8.0.1.tar.gz
+  CMAKE_FLAGS "-DFMT_MASTER_PROJECT=OFF;-DFMT_INSTALL=ON;"
 )
 
 find_library(FMT_LIBRARY
