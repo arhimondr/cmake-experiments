@@ -1,20 +1,19 @@
 cmake_minimum_required(VERSION 3.5)
+
 cmake_policy(SET CMP0135 NEW)
-
-project(fmt-download NONE)
-
-# Supress unused build variables warnings (such as CMAKE_C_FLAGS when an underlying project is a pure C++ project)
 cmake_policy(SET CMP0077 NEW)
+
+project(3rd-party-${LIB_NAME} NONE)
 
 include(ExternalProject)
 
-ExternalProject_Add(fmt
-  URL               https://github.com/fmtlib/fmt/archive/refs/tags/8.0.1.tar.gz
-  SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/fmt-src"
-  BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/fmt-build"
-  INSTALL_DIR       "${CMAKE_CURRENT_BINARY_DIR}/fmt-install"
+ExternalProject_Add(${LIB_NAME}
+  URL               "${LIB_URL}"
+  SOURCE_DIR        "${LIB_SOURCE_DIR}"
+  BINARY_DIR        "${LIB_BUILD_DIR}"
+  INSTALL_DIR       "${LIB_INSTALL_DIR}"
   CMAKE_GENERATOR   "${CMAKE_GENERATOR}"
-  CMAKE_ARGS        "-DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/fmt-install;"
+  CMAKE_ARGS        "-DCMAKE_INSTALL_PREFIX=${LIB_INSTALL_DIR};"
                     "-DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH};"
                     "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE};"
                     "-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD};"
@@ -24,7 +23,6 @@ ExternalProject_Add(fmt
                     "-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER};"
                     "-DCMAKE_C_FLAGS=${CMAKE_C_FLAGS};"
                     "-DCMAKE_MODULE_LINKER_FLAGS=${CMAKE_MODULE_LINKER_FLAGS};"
-                    "-DFMT_MASTER_PROJECT=OFF;"
-                    "-DFMT_INSTALL=ON;"
+                    "${LIB_CMAKE_FLAGS}"
   TEST_COMMAND      ""
 )
