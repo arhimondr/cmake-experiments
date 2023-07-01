@@ -4,4 +4,5 @@ include(fmt/fmt)
 include(googletest/googletest)
 include(folly/folly)
 include(fizz/fizz)
+include(wangle/wangle)
 
