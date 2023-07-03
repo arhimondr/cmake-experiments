@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.5)
+
+#cmake_policy(SET CMP0135 NEW)
+cmake_policy(SET CMP0043 NEW)
+cmake_policy(SET CMP0077 NEW)
+
+project(3rd-party-${LIB_NAME} NONE)
+
+include(ExternalProject)
+
+ExternalProject_Add(${LIB_NAME}
+  URL               "${LIB_URL}"
+  SOURCE_DIR        "${LIB_SOURCE_DIR}"
+  BINARY_DIR        "${LIB_BUILD_DIR}"
+  INSTALL_DIR       "${LIB_INSTALL_DIR}"
+  SOURCE_SUBDIR     "${LIB_SOURCE_SUBDIR}"
+  PATCH_COMMAND     "${LIB_PATCH_COMMAND}"
+  CONFIGURE_COMMAND "${LIB_CONFIGURE_COMMAND}"
+  BUILD_COMMAND     "${LIB_BUILD_COMMAND}"
+  INSTALL_COMMAND   "${LIB_INSTALL_COMMAND}"
+  TEST_COMMAND      ""
+)
