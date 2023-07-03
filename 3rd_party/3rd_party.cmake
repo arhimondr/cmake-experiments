@@ -8,4 +8,5 @@ include(wangle/wangle)
 include(proxygen/proxygen)
 include(fbthrift/fbthrift)
 include(antlr/antlr)
+include(protobuf/protobuf)
 
