@@ -8,7 +8,7 @@ install_3rd_party_cmake_dependency(
 
 find_library(PROTOBUF_LIBRARY
     NAMES protobuf protobufd
-    PATHS ${3RD_PARTY_protobuf_INSTALL_DIR}/lib64
+    PATHS ${3RD_PARTY_protobuf_INSTALL_DIR}/lib ${3RD_PARTY_protobuf_INSTALL_DIR}/lib64
     NO_DEFAULT_PATH
     NO_CMAKE_FIND_ROOT_PATH
     REQUIRED
