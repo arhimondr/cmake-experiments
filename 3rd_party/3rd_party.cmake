@@ -7,4 +7,5 @@ include(fizz/fizz)
 include(wangle/wangle)
 include(proxygen/proxygen)
 include(fbthrift/fbthrift)
+include(antlr/antlr)
 

@@ -1,0 +1,29 @@
+From ed6def4e3d2f3a0167b0b19aeb4f48597b0d18ab Mon Sep 17 00:00:00 2001
+From: Andrii Rosa <andriyrosa@gmail.com>
+Date: Mon, 3 Jul 2023 12:51:51 -0400
+Subject: [PATCH] Disable shared install target
+
+---
+ runtime/Cpp/runtime/CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/runtime/Cpp/runtime/CMakeLists.txt b/runtime/Cpp/runtime/CMakeLists.txt
+index c8b16c6cf..6b5e1aa57 100644
+--- a/runtime/Cpp/runtime/CMakeLists.txt
++++ b/runtime/Cpp/runtime/CMakeLists.txt
+@@ -140,9 +140,9 @@ set_target_properties(antlr4_static
+                                  ARCHIVE_OUTPUT_DIRECTORY ${LIB_OUTPUT_DIR}
+                                  COMPILE_FLAGS "${disabled_compile_warnings} ${extra_static_compile_flags}")
+ 
+-install(TARGETS antlr4_shared
+-        DESTINATION lib
+-        EXPORT antlr4-targets)
++#install(TARGETS antlr4_shared
++#        DESTINATION lib
++#        EXPORT antlr4-targets)
+ install(TARGETS antlr4_static
+         DESTINATION lib
+         EXPORT antlr4-targets)
+-- 
+2.41.0
+

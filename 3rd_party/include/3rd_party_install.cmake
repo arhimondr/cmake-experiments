@@ -2,7 +2,7 @@ include_guard(GLOBAL)
 
 function(install_3rd_party_cmake_dependency)
     
-    cmake_parse_arguments("LIB" "" "NAME;URL;SOURCE_SUBDIR;" "CMAKE_FLAGS;" ${ARGN})
+    cmake_parse_arguments("LIB" "" "NAME;URL;SOURCE_SUBDIR;" "CMAKE_FLAGS;PATCH_COMMAND;" ${ARGN})
 
     if(NOT LIB_NAME)
         message(FATAL_ERROR "Parameter NAME is required!")
@@ -20,7 +20,9 @@ function(install_3rd_party_cmake_dependency)
         set(LIB_SOURCE_SUBDIR ".")
     endif()
 
-    message("LIB_CMAKE_FLAGS=" ${LIB_CMAKE_FLAGS})
+    if(NOT LIB_PATCH_COMMAND)
+        set(LIB_PATCH_COMMAND "")
+    endif()
 
 
     set(LIB_ROOT_DIR ${CMAKE_BINARY_DIR}/3rd_party/${LIB_NAME})
